@@ -11,14 +11,18 @@ export class LoginPage {
     this.usernameInput = this.page.getByPlaceholder('Username');
     this.userPasswordInput = this.page.getByPlaceholder('Password');
     this.loginButton = this.page.getByRole('button', { name: 'Login' });
-    this.errorMessage = this.page.locator('//h3[@data-test="error"]');
+    this.errorMessage = this.page.locator('[data-test="error"]');
   }
 
-  async login(username: string, password: string): Promise<InventoryPage> {
+  async loginToInventoryPage(username: string, password: string): Promise<InventoryPage> {
+    this.login(username, password);
+
+    return new InventoryPage(this.page);
+  }
+
+  async login(username: string, password: string): Promise<void> {
     await this.usernameInput.fill(username);
     await this.userPasswordInput.fill(password);
     await this.loginButton.click();
-
-    return new InventoryPage(this.page);
   }
 }

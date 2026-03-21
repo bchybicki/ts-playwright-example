@@ -14,7 +14,7 @@ export const test = base.extend<Pages>({
     const loginPage = new LoginPage(page);
     await page.goto('/');
 
-    const inventoryPage = await loginPage.login('standard_user', userPassword);
+    const inventoryPage = await loginPage.loginToInventoryPage('standard_user', userPassword);
     await use(inventoryPage);
   },
 });

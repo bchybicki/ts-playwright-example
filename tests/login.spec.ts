@@ -8,7 +8,7 @@ test('user should see products list after a successful login', async ({ page }) 
   const loginPage = new LoginPage(page);
   await page.goto('/');
 
-  const inventoryPage = await loginPage.login('standard_user', userPassword);
+  const inventoryPage = await loginPage.loginToInventoryPage('standard_user', userPassword);
 
   await expect(inventoryPage.inventoryList).toBeVisible();
 });
@@ -18,6 +18,6 @@ test('user should see error message after logging in as a locked out user', asyn
   await page.goto('/');
 
   loginPage.login('locked_out_user', userPassword);
-  // nie używam zwracanego inventoryPage, czy to okej?
+
   await expect(loginPage.errorMessage).toBeVisible();
 });
