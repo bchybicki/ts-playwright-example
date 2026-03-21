@@ -7,7 +7,8 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: 'https://www.saucedemo.com',
-    trace: 'on-all-retries',
+    trace: 'retain-on-failure',
+    video: 'retain-on-failure',
   },
 
   projects: [

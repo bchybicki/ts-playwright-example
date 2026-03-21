@@ -3,19 +3,23 @@ import { CartPage } from './cart.page';
 
 export class InventoryPage {
   inventoryList: Locator;
-  backpackAddToCartButton: Locator;
+  addToCartButton: String;
   cartBadge: Locator;
   cartButton: Locator;
 
   constructor(private page: Page) {
     this.inventoryList = this.page.locator('.inventory_list');
-    this.backpackAddToCartButton = this.page.locator('#add-to-cart-sauce-labs-backpack');
+    this.addToCartButton = '.inventory_item:has-text("[REPLACE]") button';
     this.cartBadge = this.page.locator('.shopping_cart_badge');
     this.cartButton = this.page.locator('.shopping_cart_link');
   }
 
+  getAddToCartButtonLocator(productName: string): Locator {
+    return this.page.locator(this.addToCartButton.replaceAll('[REPLACE]', productName));
+  }
+
   async openCart(): Promise<CartPage> {
-    this.cartButton.click();
+    await this.cartButton.click();
 
     return new CartPage(this.page);
   }

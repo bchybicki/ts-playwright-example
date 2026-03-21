@@ -15,7 +15,7 @@ export class LoginPage {
   }
 
   async loginToInventoryPage(username: string, password: string): Promise<InventoryPage> {
-    this.login(username, password);
+    await this.login(username, password);
 
     return new InventoryPage(this.page);
   }

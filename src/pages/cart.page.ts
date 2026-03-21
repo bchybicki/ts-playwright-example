@@ -13,7 +13,7 @@ export class CartPage {
   }
 
   async goToCheckout(): Promise<CheckoutPage> {
-    this.checkoutButton.click();
+    await this.checkoutButton.click();
 
     return new CheckoutPage(this.page);
   }
