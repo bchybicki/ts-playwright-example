@@ -30,9 +30,9 @@ jobs:
           retention-days: 30
       - name: Setup Pages
         if: always()
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: report-artifact
