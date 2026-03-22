@@ -21,3 +21,12 @@ test('user should see error message after logging in as a locked out user', asyn
 
   await expect(loginPage.errorMessage).toBeVisible();
 });
+
+test('failed test should cause the trace and video to be published', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await page.goto('/');
+
+  const inventoryPage = await loginPage.loginToInventoryPage('invalid_user', userPassword);
+
+  await expect(inventoryPage.inventoryList).toBeVisible();
+});
