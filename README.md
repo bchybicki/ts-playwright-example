@@ -49,4 +49,4 @@ Reusing a session cookie was considered but intentionally skipped. Given the sma
 
 ### Using .env file
 
-I added a .env file to store the password. This is a good practice for storing sensitive information. It is not a secret management system, but it is better than hardcoding the credentials in the code. For a production environment, I would recommend using a secret management system like AWS Secrets Manager.
+I added a .env file to store the password locally. The password is also kept as a Repository Secret. This is a good practice for storing sensitive information. It is not a secret management system, but it is definitely better than hardcoding the credentials in the code. In a real world application I would recommend using a secret management system like AWS Secrets Manager.
